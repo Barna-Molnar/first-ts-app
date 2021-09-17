@@ -26,6 +26,7 @@ const AddToList: React.FC<Iprops> = ({ people, setPeople }) => {
     e: React.MouseEvent<HTMLButtonElement, MouseEvent>
   ): void => {
     if (!input.name || !input.age || !input.url) return;
+
     setPeople([
       ...people,
       {
