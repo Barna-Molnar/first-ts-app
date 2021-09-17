@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
-import { Istate as Iprops } from '../App';
+import { Istate as Props } from '../App';
 
-interface Props {
-  people: Iprops['people'];
-  setPeople: React.Dispatch<React.SetStateAction<Iprops['people']>>;
+interface Iprops {
+  people: Props['people'];
+  setPeople: React.Dispatch<React.SetStateAction<Props['people']>>;
 }
 
-const AddToList: React.FC<Props> = ({ people, setPeople }) => {
+const AddToList: React.FC<Iprops> = ({ people, setPeople }) => {
   const [input, setInput] = useState({
     name: '',
     age: '',
@@ -20,6 +20,26 @@ const AddToList: React.FC<Props> = ({ people, setPeople }) => {
     setInput({
       ...input,
       [e.target.name]: e.target.value,
+    });
+  };
+  const handleClick = (
+    e: React.MouseEvent<HTMLButtonElement, MouseEvent>
+  ): void => {
+    if (!input.name || !input.age || !input.url) return;
+    setPeople([
+      ...people,
+      {
+        name: input.name,
+        age: parseInt(input.age),
+        url: input.url,
+        note: input.note,
+      },
+    ]);
+    setInput({
+      name: '',
+      age: '',
+      url: '',
+      note: '',
     });
   };
 
