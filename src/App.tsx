@@ -26,8 +26,8 @@ function App() {
   return (
     <div className="App">
       <Header />
-      <List people={people} setPeople={setPeople} />
-      <AddToList />
+      <List people={people} />
+      <AddToList people={people} setPeople={setPeople} />
     </div>
   );
 }

@@ -1,46 +1,7 @@
 import React from 'react';
 import { Istate as Iprops } from '../App';
-import styled from 'styled-components';
 
-// const UlStyles = styled.ul`
-//   border: 1px solid #8d8282;
-//   width: 600px;
-//   margin: 0 auto;
-//   .List {
-//     display: flex;
-//     align-items: center;
-
-//     &-header {
-//       padding: 1rem 3rem;
-//       display: flex;
-//       justify-content: center;
-//       align-items: center;
-//       img {
-//         width: 120px;
-//         border-radius: 50rem;
-//       }
-//       h2 {
-//         margin-left: 2rem;
-//         font-size: 2rem;
-//       }
-//     }
-//     p {
-//       font-size: 1.6rem;
-//     }
-//     &-note {
-//       margin-left: 2rem;
-//       font-size: 1.4rem;
-//       color: #a19797;
-//     }
-//   }
-// `;
-
-interface Props {
-  people: Iprops['people'];
-  setPeople: React.Dispatch<React.SetStateAction<Iprops['people']>>;
-}
-
-const List: React.FC<Props> = ({ people }) => {
+const List: React.FC<Iprops> = ({ people }) => {
   ////
   const renderList = (): JSX.Element[] => {
     return people.map((person) => {
