@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { createContext, ReactNode, useEffect, useState } from 'react';
 import './App.scss';
 import AddToList from './Components /AddToList';
 import Header from './Components /Header';
@@ -13,6 +13,15 @@ export interface Istate {
   }[];
 }
 
+const notes = {
+  firstNote: 'this is the fist one ',
+  secondNote: 'this is the second one ',
+};
+
+export type NoteState = typeof notes;
+
+export const NoteContext = createContext<NoteState>(notes);
+
 function App() {
   const [people, setPeople] = useState<Istate['people']>([
     {
@@ -24,11 +33,13 @@ function App() {
   ]);
 
   return (
-    <div className="App">
-      <Header />
-      <List people={people} />
-      <AddToList people={people} setPeople={setPeople} />
-    </div>
+    <NoteContext.Provider value={notes}>
+      <div className="App">
+        <Header />
+        <List people={people} />
+        <AddToList people={people} setPeople={setPeople} />
+      </div>
+    </NoteContext.Provider>
   );
 }
 
