@@ -4,9 +4,9 @@ import { Istate as Iprops } from '../App';
 const List: React.FC<Iprops> = ({ people }) => {
   ////
   const renderList = (): JSX.Element[] => {
-    return people.map((person) => {
+    return people.map((person, idx) => {
       return (
-        <li className="List">
+        <li className="List" key={idx}>
           <div className="List-header">
             <img src={person.url} alt="" className="List-img" />
             <h2>{person.name}</h2>

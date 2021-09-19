@@ -1,12 +1,14 @@
 import React, { useState } from 'react';
-import { Istate as Props } from '../App';
+import { Istate as Props, NoteState } from '../App';
 
 interface Iprops {
   people: Props['people'];
   setPeople: React.Dispatch<React.SetStateAction<Props['people']>>;
+  note: NoteState;
+  setNote: React.Dispatch<React.SetStateAction<NoteState>>;
 }
 
-const AddToList: React.FC<Iprops> = ({ people, setPeople }) => {
+const AddToList: React.FC<Iprops> = ({ people, setPeople, note, setNote }) => {
   const [input, setInput] = useState({
     name: '',
     age: '',
@@ -22,6 +24,16 @@ const AddToList: React.FC<Iprops> = ({ people, setPeople }) => {
       [e.target.name]: e.target.value,
     });
   };
+  const handleClickNote = (
+    e: React.MouseEvent<HTMLButtonElement, MouseEvent>
+  ): void => {
+    console.log('faszom');
+    setNote({
+      ...note,
+      secondNote: input.note,
+    });
+  };
+
   const handleClick = (
     e: React.MouseEvent<HTMLButtonElement, MouseEvent>
   ): void => {
@@ -79,6 +91,10 @@ const AddToList: React.FC<Iprops> = ({ people, setPeople }) => {
       />
       <button className="AddToList-btn" onClick={handleClick}>
         Set People
+      </button>
+      <br></br>
+      <button className="AddToList-btn" onClick={handleClickNote}>
+        Set note
       </button>
     </div>
   );

@@ -3,6 +3,7 @@ import { NoteContext, NoteState } from '../App';
 
 const Header: React.FC = () => {
   const note = useContext<NoteState>(NoteContext);
+
   return (
     <div>
       <h1>First ts Application...</h1>
